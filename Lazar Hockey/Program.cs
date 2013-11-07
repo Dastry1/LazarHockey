@@ -11,12 +11,13 @@ namespace Lazar_Hockey
         {
             RenderWindow window = new RenderWindow(new VideoMode(1280, 720), "SFML Window");
             window.Closed += (sender, eventArgs) => window.Close();
-
+            window.KeyPressed += new System.EventHandler<KeyEventArgs>(OnKeyPressed);
             while (window.IsOpen())
             {
                 window.DispatchEvents();
 
                 // TODO: Insert Update Code Here
+               
 
                 window.Clear(CornflowerBlue);
 
@@ -24,6 +25,15 @@ namespace Lazar_Hockey
 
                 window.Display();
             }
+        }
+
+        static void OnKeyPressed(object sender, KeyEventArgs e)
+        {
+            Window window = (Window)sender;
+                if (e.Code == Keyboard.Key.Escape)
+                {
+                    window.Close();
+                }
         }
     }
 }
